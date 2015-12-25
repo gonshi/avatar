@@ -54,7 +54,7 @@
             this.$contents.append(this.renderer.domElement);
 
             loader = new THREE.JSONLoader();
-            loader.load('../json/face.json', (geometry, material) => {
+            loader.load('json/face.json', (geometry, material) => {
                 let face_material = new THREE.MeshFaceMaterial(material);
                 for(let i=0; i<face_material.materials.length; i++){
                     face_material.materials[i].side = THREE.DoubleSide;

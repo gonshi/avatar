@@ -66,7 +66,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 this.$contents.append(this.renderer.domElement);
 
                 loader = new THREE.JSONLoader();
-                loader.load('../json/face.json', function (geometry, material) {
+                loader.load('json/face.json', function (geometry, material) {
                     var face_material = new THREE.MeshFaceMaterial(material);
                     for (var i = 0; i < face_material.materials.length; i++) {
                         face_material.materials[i].side = THREE.DoubleSide;
