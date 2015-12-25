@@ -34,7 +34,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 this.$win.on('resize', function () {
                     _this.camera.aspect = _this.$win.width() / _this.$win.height();
                     _this.camera.updateProjectionMatrix();
-                    _this.renderer.setSize(_this.$win.width(), _this.$win.height());
+                    _this.renderer.setSize(_this.$win.width() * 2, _this.$win.height() * 2);
                 });
 
                 /*------------------------
@@ -50,7 +50,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 // controls
                 this.controls = new THREE.TrackballControls(this.camera);
                 this.controls.rotateSpeed = 5.0;
-                this.controls.noZoom = true;
+                //this.controls.noZoom = true;
 
                 // light
                 this.light = new THREE.AmbientLight(0xffffff);
@@ -62,7 +62,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                 // render
                 this.renderer = new THREE.WebGLRenderer({ alpha: true });
-                this.renderer.setSize(this.$win.width(), this.$win.height());
                 this.$contents.append(this.renderer.domElement);
 
                 loader = new THREE.JSONLoader();
@@ -76,6 +75,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     _this.scene.add(face);
                 });
 
+                this.$win.trigger('resize');
                 this.render();
             }
         }, {

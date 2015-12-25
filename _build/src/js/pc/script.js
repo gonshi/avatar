@@ -22,7 +22,7 @@
             this.$win.on('resize', () => {
                 this.camera.aspect = this.$win.width() / this.$win.height();
                 this.camera.updateProjectionMatrix();
-                this.renderer.setSize(this.$win.width(), this.$win.height());
+                this.renderer.setSize(this.$win.width() * 2, this.$win.height() * 2);
             });
 
             /*------------------------
@@ -38,7 +38,7 @@
             // controls
             this.controls = new THREE.TrackballControls(this.camera);
             this.controls.rotateSpeed = 5.0;
-            this.controls.noZoom = true;
+            //this.controls.noZoom = true;
 
             // light
             this.light = new THREE.AmbientLight(0xffffff);
@@ -50,7 +50,6 @@
 
             // render
             this.renderer = new THREE.WebGLRenderer({alpha: true});
-            this.renderer.setSize(this.$win.width(), this.$win.height());
             this.$contents.append(this.renderer.domElement);
 
             loader = new THREE.JSONLoader();
@@ -64,6 +63,7 @@
                 this.scene.add(face);
             });
 
+            this.$win.trigger('resize');
             this.render();
         }
 
